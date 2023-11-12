@@ -1,11 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Emil Tervo - Personal Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Ensure the content takes at least the full viewport height */
+        }
+
+        .dark-mode {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .light-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header.dark-mode {
+            background-color: #111;
+            color: white;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            margin: 0 10px;
+        }
+
+        .social-icon img {
+            width: auto;
+            height: 40px;
+        }
+
+        /* Toggle switch styles */
+        .toggle-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-switch-label {
+            margin-right: 10px;
+        }
+
+        .toggle-switch input[type="checkbox"] {
+            appearance: none;
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .toggle-switch input[type="checkbox"]:before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            transition: 0.3s;
+        }
+
+        .toggle-switch input[type="checkbox"]:checked:before {
+            left: 21px;
+        }
+
+        /* Centered container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            /* Center the container horizontally */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container.light-mode {
+            background-color: #fff;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="light-mode">
+    <header>
+        <h1>Emil Tervo</h1>
+        <p>Software Engineer</p>
+        <div class="social-icons">
+            <a class="social-icon github" href="https://github.com/emiltervo" target="_blank">
+                <img src="github-logo-light.png" alt="GitHub Light Mode">
+            </a>
+            <a class="social-icon linkedin" href="https://www.linkedin.com/in/your-profile" target="_blank">
+                <img src="linkedin-logo-light.png" alt="LinkedIn">
+            </a>
+        </div>
+    </header>
+
+    <!-- Centered container for "About Me" and "Projects" -->
+    <div class="container">
+        <h2>About Me</h2>
+        <p>
+            Welcome to my personal homepage! I'm a passionate software engineer based in Sweden, dedicated to creating
+            innovative solutions. Feel free to explore my projects and connect with me on social media.
+        </p>
+
+        <h2>My Projects</h2>
+        <!-- Add your project details here -->
+    </div>
+
+    <!-- Toggle switch button -->
+    <div class="toggle-switch">
+        <span class="toggle-switch-label">Toggle Light/Dark Mode:</span>
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const githubLogo = document.querySelector('.social-icon.github img');
+
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            body.classList.toggle('dark-mode');
+
+            // Swap GitHub logo src
+            if (body.classList.contains('dark-mode')) {
+                githubLogo.src = 'github-logo-dark.png'; // Use dark mode icon
+            } else {
+                githubLogo.src = 'github-logo-light.png'; // Use light mode icon
+            }
+        });
+    </script>
 </body>
+
 </html>
